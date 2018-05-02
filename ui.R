@@ -29,7 +29,7 @@ shinyUI(dashboardPage(
             ),
     
       tabItem(tabName = 'heatmap',
-            fluidPage(headerPanel('Number of Projects by Country'), box(htmlOutput("Heatmap")))
+            fluidPage(htmlOutput("Heatmap"))
             ),
       tabItem(tabName = 'graphs',
            fluidPage(headerPanel('Calendar Graph'), box(htmlOutput("calendar")))

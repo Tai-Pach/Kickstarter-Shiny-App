@@ -9,13 +9,14 @@ library(lubridate)
 library(rworldmap)
 library(knitr)
 library(googleVis)
+library(tweenr)
 
 
 kickstarter <- fread(file = "C:/Users/pache_000/Desktop/Kickstarter-Shiny-App-master/data/ks-projects-201801.csv", header = T)
 kickstarter = kickstarter[c(-2843, -48148, -75398, -94580, -247914, -273780, -319003),]
 kickstarter$deadline <- as.Date(kickstarter$deadline, "%Y-%m-%d")
 kickstarter$launched <- as.Date(kickstarter$launched, '%Y-%m-%d %H:%M:%S')
-
+kickstarter$date_diff <- kickstarter$deadline - kickstarter$launched
 #for heat map
 countries.freq <- kickstarter %>%
   filter(country!='N,0"') %>%

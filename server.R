@@ -27,7 +27,7 @@ shinyServer(function(input, output, session){
 
   output$Heatmap <- renderGvis({
     map<-gvisGeoChart(countries.freq, locationvar='country', colorvar='count',
-                      options=list(projection="kavrayskiy-vii", width='200%', colorAxis="{colors:['#FFcccc', '#FF0000']}"))
+                      options=list(title='Number of Projects by Country', projection="kavrayskiy-vii", width='100%', colorAxis="{colors:['#FFcccc', '#FF0000']}"))
     
     return(map)
   })

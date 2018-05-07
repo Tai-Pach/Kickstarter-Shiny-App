@@ -5,9 +5,9 @@ account: taipach
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 335400
-bundleId: 1350544
+bundleId: 1359446
 url: https://taipach.shinyapps.io/Kickstarter-Shiny-App-master/
-when: 1525223563.89461
+when: 1525666584.87343
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: README.md|www/custom.css.css|www/nyc_flight.png

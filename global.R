@@ -10,11 +10,15 @@ library(rworldmap)
 library(knitr)
 library(googleVis)
 
-
+# read the file 
 kickstarter <- fread(file = "./data/ks-projects-201801.csv", header = T)
+# remove 7 observations that have incorrect launch dates (year says "1970")
 kickstarter = kickstarter[c(-2843, -48148, -75398, -94580, -247914, -273780, -319003),]
+# covert deadline values to date type
 kickstarter$deadline <- as.Date(kickstarter$deadline, "%Y-%m-%d")
+#covert launched values to date type
 kickstarter$launched <- as.Date(kickstarter$launched, '%Y-%m-%d %H:%M:%S')
+# add a new column for project duration
 kickstarter$project_duration_days <- kickstarter$deadline - kickstarter$launched
 #for heat map
 countries.freq <- kickstarter %>%
@@ -45,5 +49,11 @@ des_success_n3 = des_success_n2 %>% mutate(., `Success Rate` = (`Total Successfu
 sub_count  = kickstarter %>% group_by(., category ) %>% summarise(., Count= n())
 sub_descend = sub_count %>% arrange(., desc(sub_count$Count))
 top20 = head(sub_descend, 20)
+
+
+goal_mean <- kickstarter %>% select(., main_category, usd_goal_real) %>% group_by(., main_category) %>% summarise(`Mean Goal (USD)`=mean(usd_goal_real)) %>% arrange(., desc(goal_mean$`Mean Goal (USD)`))
+
+
+
 
 

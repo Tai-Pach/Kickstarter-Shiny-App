@@ -72,13 +72,9 @@ shinyServer(function(input, output, session){
     
     return(Col3)
   })
-  # output$flow <- renderGvis({
-  # flowchart <- gvisSankey(cate, from="main_category", to="category", weight="Count",
-  #                      options=list(width= 600, height = 520,
-  #                         sankey="{link: {color: { fill: '#d799ae' } },
-  #                        node: { color: { fill: '#a61d4c' },
-  #                        label: { color: '#871b47' } }}"))
-  # return(flowchart)
-  # })
+  output$bar4 <- renderGvis({
+  bar4 <- gvisColumnChart(goal_mean, xvar = "main_category", yvar = "Mean Goal (USD)",  options = list(title='Average Goal By Main Category',  width=1000, height= 600,  vAxes="[{title:'US Dollars'}]"))
+   return(bar4)
+   })
 })
 ############################################################################################

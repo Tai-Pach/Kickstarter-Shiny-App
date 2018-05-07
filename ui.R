@@ -18,8 +18,8 @@ shinyUI(dashboardPage(
                menuItem("Sankey", tabName = "sankey", icon =icon('table')),
                menuItem("Most Popular Main Categories", tabName = 'bargraph', icon=icon('signal')),
                menuItem("Top 20 Sub Categories", tabName = 'bargraph2', icon =icon('signal')),
-               menuItem("Success Rate By Category", tabName = 'bargraph3', icon =icon('signal')))
-               #menuItem("Category Organizational Chart", tabName = 'flow_', icon =icon('tree')))
+               menuItem("Success Rate By Main Category", tabName = 'bargraph3', icon =icon('signal')),
+               menuItem("Average Goal by Main Category", tabName = 'bar4_', icon =icon('signal')))
     )),
   dashboardBody(
     tabItems(
@@ -48,9 +48,9 @@ shinyUI(dashboardPage(
             ),
       tabItem(tabName = 'bargraph3',
               fluidPage(htmlOutput("bar_graph3"))
-              )
-      #tabItem(tabName = 'flow_',
-              #fluidPage(htmlOutput("flow")))
+              ),
+      tabItem(tabName = 'bar4_',
+              fluidPage(htmlOutput("bar4")))
       )
     )
 ))

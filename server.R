@@ -17,9 +17,12 @@ shinyServer(function(input, output, session){
     }
     return(filtered_data)
   })
+  #################################################################################################
   
+  
+  ################################### OUTPUTS #####################################################
   output$table <- renderDataTable({
-    datatable(data_filter(), rownames=TRUE, options = list(columnDefs = list(list(visible = FALSE, targets = c(1,13,14,15))))) %>%
+    datatable(data_filter(), rownames=TRUE, options = list(columnDefs = list(list(visible = FALSE, targets = c(1,6,9,13))))) %>%
       formatStyle(input$selected,
                   background="skyblue", fontWeight='bold')
     
@@ -48,22 +51,34 @@ shinyServer(function(input, output, session){
   })
   output$sankey_diagram <- renderGvis({
     Sank <- gvisSankey(main_cat_state, from="main_category", to="state", weight="count",
-                       options=list(width= 600, height = 520, sankey="{link: {color: { fill: '#d799ae' } },
+                       options=list(title= 'Main Categories and Project Outcomes',width= 800, height = 520, sankey="{link: {color: { fill: '#d799ae' } },
                                     node: { color: { fill: '#a61d4c' },
                                     label: { color: '#871b47' } }}"))
     return(Sank)
 })
   output$bar_graph <- renderGvis({
-    Col <- gvisColumnChart(descend, options = list(title='Most Popular Project Categories', width=1000, height= 600,  legend = "{position: 'none'}"))
+    Col1 <- gvisColumnChart(des_success_n2, xvar = "main_category", yvar = c("Total Unsuccessful","Total Successful"),  options = list(isStacked=T, title='Most Popular Project Categories', width=1000, height= 600))
     
-    return(Col)
+    return(Col1)
   })
   
   output$bar_graph2 <- renderGvis({
-    Col <- gvisColumnChart(top20, options = list(title = 'Most Popular Project Sub-categories', width=1100, height= 600,  legend = "{position: 'none'}"))
+    Col2 <- gvisColumnChart(top20, options = list(title = 'Top 20 Most Popular Project Sub-categories', width=1100, height= 600,  legend = "{position: 'none'}"))
     
-    return(Col)
+    return(Col2)
   })
-  
-  
+  output$bar_graph3 <- renderGvis({
+    Col3 <- gvisColumnChart(des_success_n3, xvar = "main_category", yvar = "Success Rate",  options = list(title='Success Rate By Main Category', width=1000, height= 600))
+    
+    return(Col3)
+  })
+  # output$flow <- renderGvis({
+  # flowchart <- gvisSankey(cate, from="main_category", to="category", weight="Count",
+  #                      options=list(width= 600, height = 520,
+  #                         sankey="{link: {color: { fill: '#d799ae' } },
+  #                        node: { color: { fill: '#a61d4c' },
+  #                        label: { color: '#871b47' } }}"))
+  # return(flowchart)
+  # })
 })
+############################################################################################

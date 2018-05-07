@@ -16,8 +16,10 @@ shinyUI(dashboardPage(
       menuItem("Graphs", tabName = 'graph_dropdown', icon = icon('bars'),
                menuItem("Calendar", tabName = "graphs", icon = icon('calendar')),
                menuItem("Sankey", tabName = "sankey", icon =icon('table')),
-               menuItem("Bar Graph", tabName = 'bargraph', icon=icon('signal')),
-               menuItem("Bar Graph #2", tabName = 'bargraph2', icon =icon('signal')))
+               menuItem("Most Popular Main Categories", tabName = 'bargraph', icon=icon('signal')),
+               menuItem("Top 20 Sub Categories", tabName = 'bargraph2', icon =icon('signal')),
+               menuItem("Success Rate By Category", tabName = 'bargraph3', icon =icon('signal')))
+               #menuItem("Category Organizational Chart", tabName = 'flow_', icon =icon('tree')))
     )),
   dashboardBody(
     tabItems(
@@ -35,7 +37,7 @@ shinyUI(dashboardPage(
            fluidPage(headerPanel('Calendar Graph'), box(htmlOutput("calendar")))
             ),
       tabItem(tabName = 'sankey',
-            fluidPage(headerPanel('Sankey Diagram (Main Categories and Project Outcomes)'), box(htmlOutput("sankey_diagram")))
+            fluidPage(htmlOutput("sankey_diagram"))
             ),
       tabItem(tabName = 'bargraph',
             fluidPage(headerPanel(htmlOutput("bar_graph")))
@@ -43,7 +45,13 @@ shinyUI(dashboardPage(
       tabItem(tabName = 'bargraph2',
               fluidPage(htmlOutput("bar_graph2"))
     
-      ))
+            ),
+      tabItem(tabName = 'bargraph3',
+              fluidPage(htmlOutput("bar_graph3"))
+              )
+      #tabItem(tabName = 'flow_',
+              #fluidPage(htmlOutput("flow")))
+      )
     )
 ))
 

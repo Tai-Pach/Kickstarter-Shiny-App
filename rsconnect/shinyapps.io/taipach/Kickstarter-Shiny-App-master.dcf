@@ -1,0 +1,13 @@
+name: Kickstarter-Shiny-App-master
+title: Kickstarter-Shiny-App-master
+username:
+account: taipach
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 335400
+bundleId: 1350544
+url: https://taipach.shinyapps.io/Kickstarter-Shiny-App-master/
+when: 1525223563.89461
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md|www/custom.css.css|www/nyc_flight.png
